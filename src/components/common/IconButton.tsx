@@ -34,8 +34,8 @@ export default IconButton;
 
 const styles = StyleSheet.create({
   icon: {
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     margin: 5,
     borderRadius: 10,
     backgroundColor: Color.primary,
