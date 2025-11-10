@@ -14,7 +14,7 @@ function ScreenLoader({ loader }: { loader: boolean }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Color.light_grey_1,
+    backgroundColor: Color.light_grey_2,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

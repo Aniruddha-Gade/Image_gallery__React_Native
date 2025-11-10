@@ -19,6 +19,7 @@ const Color = {
   // dark_grey_2: '#D9D9D9',
   light_grey: '#B3B3B3',
   light_grey_1: 'rgba(0, 0, 0, 0.35)',
+  light_grey_2: 'rgba(98, 95, 95, 0.35)',
   // light_grey_2: '#E2E2E2',
   // light_grey_3: '#E9EAEA',
   // light_grey_4: '#EDEBFB',
@@ -41,7 +42,6 @@ const Color = {
   Nero: '#1a1a1a',
   black_2: '#1D1B20',
   thin_light_grey: '#EBEBEB',
-  light_grey_2: '#F2F2F2',
 
   // blue
   blue_light: '#b7e1ff',
