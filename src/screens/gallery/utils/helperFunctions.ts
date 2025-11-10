@@ -12,20 +12,6 @@ export const saveAsyncImages = async (images: ImageType[]) => {
   await AsyncStorage.setItem(ASYNC_KEY.GALLERY_IMAGES, JSON.stringify(images));
 };
 
-export const deleteAsyncImage = async (uri: string) => {
-  const stored = await getAsyncImages();
-  const filtered = stored?.filter?.((img: string) => img !== uri);
-  await saveAsyncImages(filtered);
-  return filtered;
-};
-
-export const deleteAsyncImages = async (uris: string[]) => {
-  const stored = await getAsyncImages();
-  const filtered = stored?.filter?.((img: string) => !uris?.includes(img));
-  await saveAsyncImages(filtered);
-  return filtered;
-};
-
 export const clearAsyncImages = async () => {
   try {
     await AsyncStorage.removeItem(ASYNC_KEY.GALLERY_IMAGES);
