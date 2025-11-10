@@ -1,0 +1,13 @@
+import { Dimensions, Platform } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
+
+export const isTablet = DeviceInfo.isTablet();
+
+export const isAndroid = Platform.OS === 'android';
+
+export const isIOS = Platform.OS === 'ios';
+
+export const isPortrait = (): boolean => {
+  const screen = Dimensions.get('screen');
+  return screen.height >= screen.width;
+};
