@@ -8,3 +8,7 @@ export const BTM_TAB_NAMES = {
   GALLERY: 'Gallery',
   SETTINGS: 'Settings',
 };
+
+export const ASYNC_KEY = {
+  GALLERY_IMAGES: 'gallery_images',
+};
