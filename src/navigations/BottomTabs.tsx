@@ -2,12 +2,15 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Feather from 'react-native-vector-icons/Feather';
 import Home from '../screens/home/Home';
 import { isTablet } from '../utils/Platform';
 import { BTM_TAB_NAMES } from '../constant/constant';
 import FONT_FAMILY from '../assets/FontFamily';
 import Color from '../assets/Color';
 import Typo from '../components/common/Typo';
+import GalleryScreen from '../screens/gallery/GalleryScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,7 +32,12 @@ const Size = isTablet ? 30 : 25;
 
 const createTabIcon = (iconName: string) => {
   const TabIcon = function TabIconComponent({ color }: { color: string }) {
-    return <MaterialIcons name={iconName} size={Size} color={color} />;
+    if(iconName === 'settings'){ 
+    return <Feather name={iconName} size={Size} color={color} />;
+    }
+    
+    return <Entypo name={iconName} size={Size} color={color} />;
+   
   };
   return TabIcon;
 };
@@ -60,16 +68,16 @@ function BottomTabs() {
         component={Home}
         options={{
           tabBarLabel: BTM_TAB_NAMES.HOME,
-          tabBarIcon: createTabIcon('dashboard'),
+          tabBarIcon: createTabIcon('home'),
         }}
       />
 
       <Tab.Screen
         name={BTM_TAB_NAMES.GALLERY}
-        component={TempScreens}
+        component={GalleryScreen}
         options={{
           tabBarLabel: BTM_TAB_NAMES.GALLERY,
-          tabBarIcon: createTabIcon('gallery'),
+          tabBarIcon: createTabIcon('images'),
         }}
       />
       <Tab.Screen

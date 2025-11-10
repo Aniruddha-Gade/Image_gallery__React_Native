@@ -12,3 +12,7 @@ export const BTM_TAB_NAMES = {
 export const ASYNC_KEY = {
   GALLERY_IMAGES: 'gallery_images',
 };
+
+export const LABEL = {
+  PLEASE_WAIT: 'Please wait...',
+};
