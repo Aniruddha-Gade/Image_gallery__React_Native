@@ -37,7 +37,7 @@ const Color = {
   // navy_blue: '#1A1B2D',
   // cadet: '#606975',
   // Charcoal: '#384352',
-  primary: '#3F51B5',
+  primary: '#32CD32',
   Nero: '#1a1a1a',
   black_2: '#1D1B20',
   thin_light_grey: '#EBEBEB',
