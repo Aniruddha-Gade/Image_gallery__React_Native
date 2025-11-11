@@ -8,7 +8,7 @@ import { BTM_TAB_NAMES } from '../constant/constant';
 import FONT_FAMILY from '../assets/FontFamily';
 import Color from '../assets/Color';
 import GalleryScreen from '../screens/gallery/GalleryScreen';
-import TodoScreen from '../screens/todo-list/TodoScreen';
+import TaskStack from './stacks/TaskStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -69,7 +69,7 @@ function BottomTabs() {
       />
       <Tab.Screen
         name={BTM_TAB_NAMES.TODO}
-        component={TodoScreen}
+        component={TaskStack}
         options={{
           tabBarLabel: BTM_TAB_NAMES.TODO,
           tabBarIcon: createTabIcon('tasks'),

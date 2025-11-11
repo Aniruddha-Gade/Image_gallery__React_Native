@@ -1,6 +1,8 @@
 export const PATH = {
   BOTTOM_TAB: 'bottom_tab',
   DOC_PREVIEW: 'doc_preview',
+  TASK_STACK: 'task_stack',
+  TASK_LIST: 'task_list',
 };
 
 export const BTM_TAB_NAMES = {

@@ -2,15 +2,15 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import Color from '../../assets/Color';
 
-const TodoScreen = () => {
+const TaskScreen = () => {
   return (
     <ScrollView style={styles.container}>
-      <Text>TodoScreen</Text>
+      <Text>TaskScreen</Text>
     </ScrollView>
   );
 };
 
-export default TodoScreen;
+export default TaskScreen;
 
 const styles = StyleSheet.create({
   container: {
