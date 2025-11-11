@@ -11,3 +11,6 @@ export const isPortrait = (): boolean => {
   const screen = Dimensions.get('screen');
   return screen.height >= screen.width;
 };
+
+export const WIDTH = Dimensions.get('window').width;
+export const HEIGHT = Dimensions.get('window').height;
