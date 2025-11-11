@@ -1,7 +1,6 @@
 import {
   FlatList,
   Image,
-  ScrollView,
   StyleSheet,
   TouchableOpacity,
   View,
@@ -15,6 +14,7 @@ import IconButton from '../../../components/common/IconButton';
 import { ImageType } from '../types/type';
 import NoDataComponent from '../../../components/common/NoDataComponent';
 import { LABEL } from '../constant/constant';
+import { isArrayLength } from '../../../utils/Validations';
 
 const GalleryListing = () => {
   const {
@@ -60,13 +60,17 @@ const GalleryListing = () => {
         contentContainerStyle={styles.flatList}
       />
 
-      <IconButton
-        onPress={handleClearAsyncImages}
-        name="clear"
-        icon="MaterialIcons"
-        customStyles={styles.clearBtn}
-      />
+      {/* Clear All Button */}
+      {isArrayLength(images) && (
+        <IconButton
+          onPress={handleClearAsyncImages}
+          name="clear"
+          icon="MaterialIcons"
+          customStyles={styles.clearBtn}
+        />
+      )}
 
+      {/* Add Image Button */}
       <IconButton
         onPress={pickImages}
         name="plus"
