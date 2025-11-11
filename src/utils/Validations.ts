@@ -9,3 +9,9 @@ export function isArrayLength(array: any): boolean {
 export function isArray(array: any): boolean {
   return notNullUndefined(array) && Array.isArray(array);
 }
+
+export function notEmpty(value: any): boolean {
+  return (
+    notNullUndefined(value) && typeof value === 'string' && value?.trim() !== ''
+  );
+}
