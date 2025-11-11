@@ -1,7 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { View } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Feather from 'react-native-vector-icons/Feather';
 import Home from '../screens/home/Home';
@@ -23,7 +22,6 @@ function TempScreens() {
         fontSize={isTablet ? 22 : 18}
         fontFamily={FONT_FAMILY.POPPINS_SEMIBOLD}
       />
-      {/* <StyledTextBold>Coming Soon.....</StyledTextBold> */}
     </View>
   );
 }
@@ -32,12 +30,11 @@ const Size = isTablet ? 30 : 25;
 
 const createTabIcon = (iconName: string) => {
   const TabIcon = function TabIconComponent({ color }: { color: string }) {
-    if(iconName === 'settings'){ 
-    return <Feather name={iconName} size={Size} color={color} />;
+    if (iconName === 'settings') {
+      return <Feather name={iconName} size={Size} color={color} />;
     }
-    
+
     return <Entypo name={iconName} size={Size} color={color} />;
-   
   };
   return TabIcon;
 };
@@ -52,15 +49,19 @@ function BottomTabs() {
           fontFamily: FONT_FAMILY.POPPINS_SEMIBOLD,
         },
         tabBarActiveTintColor: Color.primary,
-        tabBarInactiveTintColor: Color.grey,
+        tabBarInactiveTintColor: Color.white,
         tabBarStyle: {
-          minHeight: isTablet ? 55 : 55,
+          minHeight: 55,
           alignItems: 'center',
-          paddingHorizontal: isTablet ? 8 : 0,
+          backgroundColor: Color.black_2,
+          borderTopWidth: 0,
+          elevation: 0,
+          shadowOpacity: 0,
         },
         tabBarHideOnKeyboard: true,
         tabBarLabelPosition: isTablet ? 'beside-icon' : 'below-icon',
         tabBarShowLabel: true,
+        tabBarActiveBackgroundColor: Color.black_1,
       }}
     >
       <Tab.Screen

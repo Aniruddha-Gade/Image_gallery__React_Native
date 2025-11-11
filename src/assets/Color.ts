@@ -3,9 +3,9 @@ const Color = {
   // white_1: '#FFFFFFCC',
   // white_2: '#FAFAFA',
   black: '#000000',
-  // black_1: '#1E1E1E',
-  // black_2: '#15191E',
-  // black_3: '#0C0310',
+  black_1: '#494949',
+  black_2: '#303030',
+  black_3: '#000000',
   red: '#D32F2F',
   // red_1: '#EF0404',
   // red_2: '#C80000',
@@ -40,7 +40,6 @@ const Color = {
   // Charcoal: '#384352',
   primary: '#32CD32',
   Nero: '#1a1a1a',
-  black_2: '#1D1B20',
   thin_light_grey: '#EBEBEB',
 
   // blue
