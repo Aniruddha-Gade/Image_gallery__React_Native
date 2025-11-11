@@ -39,6 +39,7 @@ const Color = {
   // cadet: '#606975',
   // Charcoal: '#384352',
   primary: '#32CD32',
+  primary_light_1: '#326832ff',
   Nero: '#1a1a1a',
   thin_light_grey: '#EBEBEB',
 

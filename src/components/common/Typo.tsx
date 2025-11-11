@@ -5,7 +5,7 @@ import { TypoProps } from '../../types/typs';
 
 const Typo = ({
   size,
-  color = Color.white,
+  color = Color.white_1,
   fontWeight = '400',
   children,
   style,
