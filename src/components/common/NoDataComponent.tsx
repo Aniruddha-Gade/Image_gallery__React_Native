@@ -38,11 +38,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: FONT_FAMILY.POPPINS_REGULAR,
     fontSize: isTablet ? 24 : 16,
+    fontWeight: '700',
+    marginTop: 20
   },
   image: {
-    width: isTablet ? 300 : 250,
+    width: isTablet ? 400 : 300,
     height: isTablet ? 300 : 200,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
+    borderRadius: 20,
   },
 });
 
