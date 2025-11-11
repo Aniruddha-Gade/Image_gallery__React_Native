@@ -24,7 +24,7 @@ export default GalleryScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Color.black_3,
+    backgroundColor: Color.black,
     padding: 5,
     paddingHorizontal: 10,
   },

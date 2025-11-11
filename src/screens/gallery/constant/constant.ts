@@ -4,5 +4,5 @@ export const LABEL = {
   REMOVE_IMAGE: 'Remove this image?',
   DELETE: 'Delete',
   MY_GALLERY: 'My Gallery',
-  NO_DATA: 'No images found',
+  NO_DATA: 'No images found \n Please pick images from your gallery',
 };

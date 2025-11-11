@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: Color.black_3,
     borderRadius: 10,
     padding: 15,
     marginVertical: 8,
@@ -68,11 +68,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#333',
+    color: Color.white_1,
   },
   detail: {
     fontSize: 15,
-    color: '#666',
+    color: Color.white_2,
     marginTop: 5,
   },
   footer: {
@@ -81,6 +81,6 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: 14,
-    color: '#888',
+     color: Color.white_2,
   },
 });

@@ -3,6 +3,7 @@ import { isTablet } from '../../utils/Platform';
 import { LABEL } from '../../constant/constant';
 import FONT_FAMILY from '../../assets/FontFamily';
 import Typo from './Typo';
+import Color from '../../assets/Color';
 
 function NoDataComponent({
   text = 'No Data Available',
@@ -39,7 +40,8 @@ const styles = StyleSheet.create({
     fontFamily: FONT_FAMILY.POPPINS_REGULAR,
     fontSize: isTablet ? 24 : 16,
     fontWeight: '700',
-    marginTop: 20
+    marginTop: 20,
+    color: Color.white_2,
   },
   image: {
     width: isTablet ? 400 : 300,
