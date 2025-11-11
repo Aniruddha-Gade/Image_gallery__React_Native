@@ -6,7 +6,7 @@ export const PATH = {
 export const BTM_TAB_NAMES = {
   HOME: 'Home',
   GALLERY: 'Gallery',
-  SETTINGS: 'Settings',
+  TODO: 'Todo',
 };
 
 export const ASYNC_KEY = {
