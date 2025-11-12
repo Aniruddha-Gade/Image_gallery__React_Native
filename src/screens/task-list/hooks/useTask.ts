@@ -68,7 +68,7 @@ export default function useTask() {
     // if (!searchQuery?.trim()) return tasks;
     if (!notEmpty(searchQuery)) return tasks;
     const q = searchQuery?.toLowerCase();
-    return tasks.filter(t =>
+    return tasks?.filter(t =>
       (t?.title + ' ' + (t?.description ?? ''))?.toLowerCase()?.includes?.(q),
     );
   }, [tasks, searchQuery]);
@@ -105,7 +105,7 @@ export default function useTask() {
   };
 
   return {
-    tasks: paginated,
+    tasks,
     fullCount: filtered?.length,
     loading,
     syncing,

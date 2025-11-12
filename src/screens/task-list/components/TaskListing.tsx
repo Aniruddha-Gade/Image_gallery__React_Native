@@ -71,7 +71,7 @@ export default function TaskListing() {
 
       {/* Listing */}
       <FlatList
-        data={tasks}
+        data={tasks ?? []}
         keyExtractor={(item: Task) => item?.id?.toString()}
         renderItem={renderItem}
         onEndReached={loadMore}
