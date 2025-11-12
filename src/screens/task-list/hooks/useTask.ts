@@ -105,7 +105,7 @@ export default function useTask() {
   };
 
   return {
-    tasks,
+    tasks: paginated,
     fullCount: filtered?.length,
     loading,
     syncing,

@@ -4,7 +4,7 @@ export type Task = {
   id: string; // local uuid
   title: string;
   description: string;
-  status: boolean;
+  // status: boolean;
   completed: boolean;
   createdAt: string;      
   updatedAt: string;      

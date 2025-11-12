@@ -68,7 +68,7 @@ export default function useAddTask({
             ...existingTask,
             title: data?.title?.trim(),
             description: data?.description?.trim() ?? '',
-            status: data?.status ?? false,
+            completed: data?.status ?? false,
             updatedAt: new Date().toISOString(),
             syncStatus: SYNC_STATUS.PENDING, // mark as pending
           };
@@ -98,8 +98,7 @@ export default function useAddTask({
             id: uuidv4(),
             title: data?.title?.trim(),
             description: data?.description?.trim() ?? '',
-            status: data?.status ?? false,
-            completed: false,
+            completed: data?.status ?? false,
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),
             syncStatus: SYNC_STATUS.PENDING,
