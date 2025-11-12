@@ -18,4 +18,5 @@ export const ASYNC_KEY = {
 export const LABEL = {
   PLEASE_WAIT: 'Please wait...',
   YOU_ARE_OFFLINE: 'You are offline',
+  NO_PENDING_TASKS_TO_SYNC: 'No pending tasks to sync',
 };
