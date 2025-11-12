@@ -61,7 +61,48 @@ const tasksSlice = createSlice({
     },
 
     // mark task as synced and set remoteId if provided
-    
+    markTaskSynced: (
+      state,
+      action: PayloadAction<{ id: string; remoteId?: number | null }>,
+    ) => {
+      const idx = state.list?.findIndex?.(t => t?.id === action.payload?.id);
+      if (idx >= 0) {
+        state.list[idx].syncStatus = SYNC_STATUS.SYNCED;
+        if (action.payload?.remoteId)
+          state.list[idx].remoteId = action.payload?.remoteId;
+      }
+    },
+
+    // replace full list (load from storage)
+    setAllTasks: (state, action: PayloadAction<Task[]>) => {
+      state.list = action.payload;
+    },
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(loadTasks.pending, state => {
+        state.loading = true;
+      })
+      .addCase(loadTasks.fulfilled, (state, action) => {
+        state.loading = false;
+        state.list = action.payload;
+      })
+      .addCase(loadTasks.rejected, state => {
+        state.loading = false;
+      })
+      .addCase(syncPendingTasks.pending, state => {
+        state.syncing = true;
+      })
+      .addCase(syncPendingTasks.fulfilled, (state, action) => {
+        state.syncing = false;
+        state.list = action.payload;
+        state.lastSync = new Date().toISOString();
+      })
+      .addCase(syncPendingTasks.rejected, (state, action) => {
+        state.syncing = false;
+        state.error = action.error.message ?? 'Sync failed';
+      });
+  },
 });
 
 export const {
@@ -69,6 +110,8 @@ export const {
   editTaskLocal,
   deleteTaskLocal,
   removeTaskById,
+  markTaskSynced,
+  setAllTasks,
 } = tasksSlice.actions;
 
 export default tasksSlice.reducer;
