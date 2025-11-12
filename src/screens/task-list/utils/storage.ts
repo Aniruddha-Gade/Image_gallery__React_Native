@@ -1,7 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Task } from '../types/type';
-
-const TASKS_KEY = 'MYAPP_TASKS_V2';
+import { TASKS_KEY } from '../constant/constant';
 
 // Save full task list
 export const saveTasksToStorage = async (tasks: Task[]) => {
