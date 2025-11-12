@@ -36,3 +36,8 @@ export interface IconProps {
   color: string;
   style?: TextStyle;
 }
+
+
+export interface InputObject {
+  [key: string]: string;
+}

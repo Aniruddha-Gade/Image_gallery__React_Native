@@ -17,4 +17,5 @@ export const ASYNC_KEY = {
 
 export const LABEL = {
   PLEASE_WAIT: 'Please wait...',
+  YOU_ARE_OFFLINE: 'You are offline',
 };

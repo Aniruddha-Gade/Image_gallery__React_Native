@@ -17,4 +17,7 @@ export const commonStyles = StyleSheet.create({
     textAlign: 'left',
     color: Color.red,
   },
+  blackColor: {
+    color: Color.white_1,
+  },
 });
