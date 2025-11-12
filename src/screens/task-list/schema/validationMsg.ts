@@ -2,6 +2,7 @@ export const ERR = {
   name: {
     required: 'Task name is required',
     min: 'Task name must be at least 3 characters long',
+    max: 'Task name can be up to 50 characters',
   },
   description: {
     required: 'Description is required',

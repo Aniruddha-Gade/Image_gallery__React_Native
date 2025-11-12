@@ -3,7 +3,7 @@ import { boolean, string } from 'yup';
 import { ERR } from './validationMsg';
 
 export const addTaskSchema = Yup.object().shape({
-  title: string().required(ERR.name.required).min(3, ERR.name.min),
+  title: string().required(ERR.name.required).min(3, ERR.name.min).max(50, ERR.name.max),
 
   description: string()
     .optional()

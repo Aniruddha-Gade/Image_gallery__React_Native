@@ -40,7 +40,7 @@ const AddTaskForm = ({ closeModal, existingTask }: Readonly<Props>) => {
             placeholder={LABEL.ENTER_TASK_TITLE}
             error={!!errors?.title}
             errorMessage={errors?.title?.message}
-            maxLength={10}
+            maxLength={50}
           />
         )}
       />
