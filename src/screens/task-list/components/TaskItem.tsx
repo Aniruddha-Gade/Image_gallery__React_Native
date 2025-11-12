@@ -1,78 +1,96 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Task } from '../types/type';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Task, SYNC_STATUS } from '../types/type';
 import Color from '../../../assets/Color';
+import StatusBadge from './StatusBadge';
+import Typo from '../../../components/common/Typo';
+import RowItem from '../../../components/common/RowItem';
 
 type Props = {
   task: Task;
-  onToggle: (t: Task) => void;
+  // onToggle: (t: Task) => void;
   onEdit: (t: Task) => void;
   onDelete: (id: string) => void;
 };
 
-export default function TaskItem({ task, onToggle, onEdit, onDelete }: Props) {
+export default function TaskItem({ task, onEdit, onDelete }: Props) {
   return (
-    <View style={styles.row}>
-      <TouchableOpacity onPress={() => onToggle(task)} style={styles.checkbox}>
-        <Text>{task.completed ? '✅' : '⬜'}</Text>
-      </TouchableOpacity>
+    <View style={styles.card}>
+      {/* Completed Checkbox */}
+      {/* <TouchableOpacity
+        // onPress={() => onToggle(task)}
+        style={styles.checkbox}
+      >
+        <Typo style={styles.checkboxText}>{task.completed ? '✅' : '⬜'}</Typo>
+      </TouchableOpacity> */}
 
+      {/* Content */}
       <TouchableOpacity style={styles.body} onPress={() => onEdit(task)}>
-        <Text style={[styles.title, task.completed && styles.done]}>
-          {task.title}
-        </Text>
-        {task.description ? (
-          <Text style={styles.desc}>{task.description}</Text>
-        ) : null}
-        {/* {task.syncStatus !== SYNC_STATUS.SYNCED && (
-          <Text style={styles.pending}>• Pending</Text>
-        )} */}
-
-        <Text style={styles.pending}>• {task.syncStatus}</Text>
+        <RowItem label="Title" value={task?.title ?? '-'} />
+        <RowItem label="Description" value={task?.description ?? '-'} />
+        <RowItem label="Completed" value={task.completed ? '✅' : '⬜'} />
+        <RowItem
+          label="Sync Status"
+          value={
+            <StatusBadge status={task.syncStatus ?? SYNC_STATUS.PENDING} />
+          }
+        />
       </TouchableOpacity>
 
+      {/* Delete */}
       <TouchableOpacity onPress={() => onDelete(task.id)} style={styles.delete}>
-        <Text style={{ color: Color.red }}>Delete</Text>
+        <Typo style={styles.deleteText}>🗑️</Typo>
       </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
+  card: {
+    width: '100%',
+    backgroundColor: Color.black_3,
+    borderRadius: 12,
+    marginBottom: 12,
     padding: 12,
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    marginBottom: 10,
-    alignItems: 'center',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 1, height: 2 },
+    shadowRadius: 4,
   },
   checkbox: {
-    width: 36,
-    alignItems: 'center',
+    position: 'absolute',
+    top: 8,
+    right: 8,
+    zIndex: 1,
   },
   body: {
-    flex: 1,
-    paddingHorizontal: 8,
+    marginTop: 10,
+    gap: 5,
   },
-  title: {
-    fontSize: 16,
+  fieldBlock: {
+    marginBottom: 8,
+  },
+  label: {
+    fontSize: 12,
     fontWeight: '600',
+    marginBottom: 2,
   },
-  desc: {
-    color: '#555',
-    marginTop: 4,
+  value: {
+    fontSize: 10,
+    color: Color.grey,
+    fontWeight: '500',
   },
   delete: {
-    paddingHorizontal: 8,
+    position: 'absolute',
+    bottom: 8,
+    right: 8,
   },
-  done: {
-    textDecorationLine: 'line-through',
-    color: '#888',
+  deleteText: {
+    color: Color.red,
+    fontSize: 18,
   },
-  pending: {
-    marginTop: 6,
-    color: '#fa8c16',
-    fontSize: 12,
+  checkboxText: {
+    fontSize: 20,
   },
 });

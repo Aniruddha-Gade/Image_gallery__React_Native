@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  View,
-  FlatList,
-  StyleSheet,
-} from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 import useTask from '../hooks/useTask';
 import TaskItem from '../components/TaskItem';
 import AddTaskForm from './AddTaskForm';
@@ -26,8 +22,8 @@ export default function TaskListing() {
     syncing,
     refreshing,
     onRefresh,
-    editTask,
-    deleteTask,
+    // editTask,
+    // deleteTask,
     syncNow,
     searchQuery,
     setSearchQuery,
@@ -35,20 +31,28 @@ export default function TaskListing() {
     openAddModal,
     closeAddModal,
     isAddModalVisible,
-    page,
-    PAGE_SIZE,
     openEditModal,
     selectedTask,
   } = useTask();
 
-  const renderItem = ({ item }: any) => (
-    <TaskItem
-      task={item}
-      onToggle={t => editTask(t.id, { completed: !t.completed })}
-      onEdit={openEditModal}
-      onDelete={id => deleteTask(id)}
-    />
-  );
+  const renderItem = ({ item }: any) => {
+    const data = {
+      id: item?.id,
+      title: item?.title,
+      description: item?.description,
+      completed: item?.completed,
+      syncStatus: item?.syncStatus,
+    };
+    return (
+      <TaskItem
+        task={data}
+        // onToggle={t => editTask(t.id, { completed: !t.completed })}
+        onEdit={openEditModal}
+        // onDelete={id => deleteTask(id)}
+        onDelete={() => {}}
+      />
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -72,6 +76,7 @@ export default function TaskListing() {
       {/* Listing */}
       <FlatList
         data={tasks ?? []}
+        numColumns={1}
         keyExtractor={(item: Task) => item?.id?.toString()}
         renderItem={renderItem}
         onEndReached={loadMore}
@@ -81,15 +86,15 @@ export default function TaskListing() {
         ListEmptyComponent={
           <NoDataComponent loading={loading} text={LABEL.NO_DATA} />
         }
-        contentContainerStyle={{ marginTop: 16 }}
+        style={{ padingBottom: 200 }}
       />
 
-      <View style={styles.countRow}>
+      {/* <View style={styles.countRow}>
         <Typo style={{ color: '#666' }}>
           Showing {tasks?.length} of {fullCount} (page {page}, page size{' '}
           {PAGE_SIZE})
         </Typo>
-      </View>
+      </View> */}
 
       {/* Add Task Button */}
       <IconButton
