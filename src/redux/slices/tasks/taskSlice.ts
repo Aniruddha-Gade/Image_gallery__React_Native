@@ -77,6 +77,11 @@ const tasksSlice = createSlice({
     setAllTasks: (state, action: PayloadAction<Task[]>) => {
       state.list = action.payload;
     },
+
+    // clear all tasks
+    clearAllTasks: state => {
+      state.list = [];
+    },
   },
   extraReducers: builder => {
     builder
@@ -112,6 +117,7 @@ export const {
   removeTaskById,
   markTaskSynced,
   setAllTasks,
+  clearAllTasks,
 } = tasksSlice.actions;
 
 export default tasksSlice.reducer;

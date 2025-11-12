@@ -13,6 +13,7 @@ import Typo from '../../../components/common/Typo';
 import CustomButton from '../../../components/common/CustomButton';
 import Searchbar from '../../../components/common/Searchbar';
 import { Task } from '../types/type';
+import { isArrayLength } from '../../../utils/Validations';
 
 export default function TaskListing() {
   const {
@@ -33,6 +34,7 @@ export default function TaskListing() {
     isAddModalVisible,
     openEditModal,
     selectedTask,
+    handleClearAll,
   } = useTask();
 
   const renderItem = ({ item }: any) => {
@@ -96,6 +98,16 @@ export default function TaskListing() {
         </Typo>
       </View> */}
 
+      {/* Clear All Button */}
+      {isArrayLength(tasks) && (
+        <IconButton
+          onPress={handleClearAll}
+          name="clear"
+          icon="MaterialIcons"
+          customStyles={styles.clearBtn}
+        />
+      )}
+
       {/* Add Task Button */}
       <IconButton
         onPress={openAddModal}
@@ -150,8 +162,8 @@ const styles = StyleSheet.create({
   },
   addBtn: {
     position: 'absolute',
-    right: 20,
-    bottom: 30,
+    right: '5%',
+    bottom: '1%',
   },
   countRow: {
     padding: 12,
@@ -160,5 +172,11 @@ const styles = StyleSheet.create({
   syncRow: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  clearBtn: {
+    position: 'absolute',
+    right: '5%',
+    bottom: '10%',
+    backgroundColor: Color.red,
   },
 });

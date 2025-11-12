@@ -22,3 +22,12 @@ export const loadTasksFromStorage = async (): Promise<Task[]> => {
     return [];
   }
 };
+
+export const clearTasksFromStorage = async () => {
+  try {
+    await AsyncStorage.removeItem(TASKS_KEY);
+  } catch (e) {
+    // console.warn('clearTasksFromStorage error', e);
+    throw e;
+  }
+};

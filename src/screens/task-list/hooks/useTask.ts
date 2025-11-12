@@ -1,13 +1,16 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Alert } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import NetInfo from '@react-native-community/netinfo';
 import { AppDispatch, RootState } from '../../../app/store';
 import {
+  clearAllTasksThunk,
   loadTasks,
   syncPendingTasks,
 } from '../../../redux/slices/tasks/taskThunks';
 import useInternet from '../../../hooks/useInternet';
 import { notEmpty } from '../../../utils/Validations';
+import { LABEL } from '../constant/constant';
 
 const PAGE_SIZE = 10;
 
@@ -104,6 +107,17 @@ export default function useTask() {
     setAddModalVisible(false);
   };
 
+  const handleClearAll = () => {
+    Alert.alert(LABEL.CLEAR_ALL, LABEL.CLEAT_ALL_CONFIRMATION, [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: LABEL.YES_CLEAR_ALL,
+        style: 'destructive',
+        onPress: () => dispatch(clearAllTasksThunk()),
+      },
+    ]);
+  };
+
   return {
     tasks: paginated,
     fullCount: filtered?.length,
@@ -123,5 +137,6 @@ export default function useTask() {
     PAGE_SIZE,
     openEditModal,
     selectedTask,
+    handleClearAll,
   };
 }

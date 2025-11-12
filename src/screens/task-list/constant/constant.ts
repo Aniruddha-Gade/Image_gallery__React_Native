@@ -14,12 +14,14 @@ export const LABEL = {
   UPDATE_TASK: 'Update Task',
   ADD_TASK_SUCCESS: 'Task added successfully',
   UPDATE_TASK_SUCCESS: 'Task updated successfully',
+  CLEAR_ALL: 'Clear All Tasks',
+  CLEAT_ALL_CONFIRMATION: 'Are you sure you want to delete all tasks?',
+  YES_CLEAR_ALL: 'Yes, clear all',
 };
 
 export const ADD_TASK_INIT_VALUES: Task = {
   title: '',
   description: '',
-  status: false,
   completed: false,
   createdAt: '',
   updatedAt: '',

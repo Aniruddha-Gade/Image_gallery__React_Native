@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
+  clearTasksFromStorage,
   loadTasksFromStorage,
   saveTasksToStorage,
 } from '../../../screens/task-list/utils/storage';
@@ -8,6 +9,7 @@ import { SYNC_STATUS, Task } from '../../../screens/task-list/types/type';
 import { isArrayLength } from '../../../utils/Validations';
 import { ToastAlert } from '../../../utils/helperFunctions/CustomToast';
 import { LABEL } from '../../../constant/constant';
+import { clearAllTasks } from './taskSlice';
 
 export const loadTasks = createAsyncThunk<Task[]>('tasks/load', async () => {
   const local = await loadTasksFromStorage();
@@ -81,5 +83,15 @@ export const syncPendingTasks = createAsyncThunk<Task[], void, { state: any }>(
 
     // else return original state, don’t wipe anything
     return local;
+  },
+);
+
+// Clear all tasks from redux and async storage
+export const clearAllTasksThunk = createAsyncThunk(
+  'tasks/clearAll',
+  async (_, { dispatch }) => {
+    // Clear Redux and async storage
+    dispatch(clearAllTasks());
+    await clearTasksFromStorage();
   },
 );
