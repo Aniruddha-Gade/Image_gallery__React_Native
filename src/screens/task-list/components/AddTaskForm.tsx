@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import React from 'react';
 import { Switch } from 'react-native-paper';
-import useAddTask from './hooks/useAddTask';
+import useAddTask from '../hooks/useAddTask';
 import { Controller } from 'react-hook-form';
 import TextField from '../../../components/common/TextField';
 import { LABEL } from '../constant/constant';
@@ -9,16 +9,18 @@ import Color from '../../../assets/Color';
 import Typo from '../../../components/common/Typo';
 import { commonStyles } from '../../../styles/style';
 import CustomButton from '../../../components/common/CustomButton';
+import { Task } from '../types/type';
 
 type Props = {
   closeModal: () => void;
+  existingTask?: Task;
 };
 
-const AddTaskForm = ({ closeModal }: Readonly<Props>) => {
+const AddTaskForm = ({ closeModal, existingTask }: Readonly<Props>) => {
   const { control, handleSubmit, errors, onSubmit } = useAddTask({
     closeModal,
+    existingTask,
   });
-  console.log('errors', errors);
 
   return (
     <View>
@@ -82,7 +84,7 @@ const AddTaskForm = ({ closeModal }: Readonly<Props>) => {
 
       {/* Submit Button */}
       <CustomButton
-        text={LABEL.SUBMIT}
+        text={existingTask ? LABEL.UPDATE_TASK : LABEL.SUBMIT}
         onPress={handleSubmit(onSubmit)}
         buttonColor={Color.primary}
       />
