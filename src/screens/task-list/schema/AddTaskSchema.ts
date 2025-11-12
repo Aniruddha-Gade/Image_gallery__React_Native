@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { boolean, date, string } from 'yup';
+import { boolean, string } from 'yup';
 import { ERR } from './validationMsg';
 
 export const addTaskSchema = Yup.object().shape({
@@ -12,5 +12,5 @@ export const addTaskSchema = Yup.object().shape({
 
   status: boolean().required(ERR.status.required),
 
-  date: date().required(ERR.date.required).typeError(ERR.date.type),
+  // date: date().required(ERR.date.required).typeError(ERR.date.type),
 });
