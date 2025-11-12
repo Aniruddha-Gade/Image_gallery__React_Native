@@ -10,20 +10,23 @@ import Typo from '../../../components/common/Typo';
 import { commonStyles } from '../../../styles/style';
 import CustomButton from '../../../components/common/CustomButton';
 import { Task } from '../types/type';
+import ScreenLoader from '../../../components/common/ScreenLoader';
 
 type Props = {
   closeModal: () => void;
-  existingTask?: Task;
+  existingTask?: Task | null;
 };
 
 const AddTaskForm = ({ closeModal, existingTask }: Readonly<Props>) => {
-  const { control, handleSubmit, errors, onSubmit } = useAddTask({
+  const { control, handleSubmit, errors, onSubmit, loading } = useAddTask({
     closeModal,
     existingTask,
   });
 
   return (
     <View>
+      <ScreenLoader loader={loading} />
+
       {/* Task Title */}
       <Controller
         control={control}
