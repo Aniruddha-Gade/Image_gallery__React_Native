@@ -59,7 +59,7 @@ export default function TaskListing() {
       <ScreenLoader loader={loading} />
 
       <View style={styles.searchRow}>
-        <Typo style={styles.header}>Tasks</Typo>
+        <Typo style={styles.header}>Tasks ({fullCount})</Typo>
 
         {/* Sync Button */}
         <CustomButton
