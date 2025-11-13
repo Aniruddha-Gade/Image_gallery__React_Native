@@ -24,6 +24,8 @@ App Link - [ https://drive.google.com/drive/folders/1vC-u6pyNKNOYvXw3wQDspXABKPs
 | [Problem Solving Origin](#problem-solving-origin-) | 💡 Real-world inspiration |
 | [Screenshots](#screen-preview-) | 🖼️ App preview |
 | [Demo Video](#demo-video-) | 🎬 App demonstration |
+| [Known Issues](#known-issues--improvements-) | ⚠️ Current bugs & enhancements |
+
 
 ---
 
@@ -95,6 +97,34 @@ The **My Gallery** app is a modern local image management tool that allows users
 - ✨ Smooth and modern UI built with clean reusable components
 
 ---
+
+## ⚠️ Known Issues & Improvements  
+
+### 📝 **Task Management App**
+1. **Edit Sync Issue** –  
+   Editing a task updates it locally, but on remote API, it currently **creates a new task instead of updating** the existing one.  
+   *(Fix: Implement `PUT /updateTask/:id` endpoint and map local → remote IDs properly.)*
+
+2. **Delete Sync Issue** –  
+   On delete, the task is removed from **Redux state** and **AsyncStorage**, but not from **remote API**.  
+   *(Fix: Implement remote delete API call in `syncPendingTasks` or separate sync delete handler.)*
+
+---
+
+### 🖼️ **My Gallery App**
+1. **Loader Behind Modal** –  
+   When pressing the **Add Image** button, the loader state turns true behind the image picker modal.  
+   *(Fix: Delay loader activation until after modal closes or show loader inside the picker context.)*
+
+---
+
+
+## 🧠 Future Enhancements  
+- 🔔 Notifications for task reminders
+- ☁️ Cloud sync for gallery and task data
+- 🧭 Improved filtering and sorting
+- 👥 Multi-user collaboration
+
 
 ## 💡 Problem Solving Origin  
 
