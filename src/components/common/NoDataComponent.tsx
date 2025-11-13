@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     height: 600,
     justifyContent: 'center',
     alignItems: 'center',
+    gap: 50,
   },
   text: {
     textAlign: 'center',
