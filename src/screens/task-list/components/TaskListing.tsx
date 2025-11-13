@@ -58,12 +58,15 @@ export default function TaskListing() {
     );
   };
 
+  console.log('fullCount = ', fullCount);
   return (
     <View style={styles.container}>
       <ScreenLoader loader={loading} />
 
       <View style={styles.searchRow}>
-        <Typo style={styles.header}>Tasks ({fullCount})</Typo>
+        <Typo style={styles.header}>
+          {LABEL.TASK} {fullCount > 0 ? `(${fullCount})` : ''}
+        </Typo>
 
         {/* Sync Button */}
         <CustomButton
@@ -184,5 +187,5 @@ const styles = StyleSheet.create({
   },
   hide: {
     display: 'none',
-  }
+  },
 });

@@ -23,6 +23,7 @@ export const LABEL = {
   DESCRIPTION: 'Description',
   STATUS: 'Status',
   TASK_DELETED: 'Task deleted successfully',
+  TASK: 'Tasks',
 };
 
 export const ADD_TASK_INIT_VALUES: Task = {
