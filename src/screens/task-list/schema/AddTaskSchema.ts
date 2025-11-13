@@ -10,7 +10,7 @@ export const addTaskSchema = Yup.object().shape({
     .max(200, ERR.description.max)
     .min(3, ERR.description.min),
 
-  status: boolean().required(ERR.status.required),
+  completed: boolean().notRequired(),
 
   // date: date().required(ERR.date.required).typeError(ERR.date.type),
 });

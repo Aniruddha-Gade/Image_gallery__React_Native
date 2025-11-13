@@ -20,7 +20,7 @@ import { pushTaskToRemote } from '../api/service/syncService';
 type FormValues = {
   title: string;
   description?: string;
-  status: boolean;
+  completed: boolean;
 };
 
 type Props = {
@@ -68,7 +68,7 @@ export default function useAddTask({
             ...existingTask,
             title: data?.title?.trim(),
             description: data?.description?.trim() ?? '',
-            completed: data?.status ?? false,
+            completed: data?.completed ?? false,
             updatedAt: new Date().toISOString(),
             syncStatus: SYNC_STATUS.PENDING, // mark as pending
           };
@@ -98,7 +98,7 @@ export default function useAddTask({
             id: uuidv4(),
             title: data?.title?.trim(),
             description: data?.description?.trim() ?? '',
-            completed: data?.status ?? false,
+            completed: data?.completed ?? false,
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),
             syncStatus: SYNC_STATUS.PENDING,

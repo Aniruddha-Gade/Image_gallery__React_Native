@@ -70,7 +70,7 @@ const AddTaskForm = ({ closeModal, existingTask }: Readonly<Props>) => {
         </Typo>
 
         <Controller
-          name="status"
+          name="completed"
           control={control}
           render={({ field: { onChange, value } }) => (
             <Switch
@@ -82,7 +82,7 @@ const AddTaskForm = ({ closeModal, existingTask }: Readonly<Props>) => {
           )}
         />
 
-        <Typo style={commonStyles.error}>{errors?.status?.message}</Typo>
+        <Typo style={commonStyles.error}>{errors?.completed?.message}</Typo>
       </View>
 
       {/* Submit Button */}
