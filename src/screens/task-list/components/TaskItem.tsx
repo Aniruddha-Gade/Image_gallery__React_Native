@@ -5,6 +5,7 @@ import Color from '../../../assets/Color';
 import StatusBadge from './StatusBadge';
 import Typo from '../../../components/common/Typo';
 import RowItem from '../../../components/common/RowItem';
+import { LABEL } from '../constant/constant';
 
 type Props = {
   task: Task;
@@ -26,19 +27,22 @@ export default function TaskItem({ task, onEdit, onDelete }: Props) {
 
       {/* Content */}
       <TouchableOpacity style={styles.body} onPress={() => onEdit(task)}>
-        <RowItem label="Title" value={task?.title ?? '-'} />
-        <RowItem label="Description" value={task?.description ?? '-'} />
-        <RowItem label="Completed" value={task.completed ? '✅' : '⬜'} />
+        <RowItem label={LABEL.TITLE} value={task?.title ?? '-'} />
+        <RowItem label={LABEL.DESCRIPTION} value={task?.description ?? '-'} />
+        <RowItem label={LABEL.STATUS} value={task?.completed ? '✅' : '⬜'} />
         <RowItem
           label="Sync Status"
           value={
-            <StatusBadge status={task.syncStatus ?? SYNC_STATUS.PENDING} />
+            <StatusBadge status={task?.syncStatus ?? SYNC_STATUS.PENDING} />
           }
         />
       </TouchableOpacity>
 
       {/* Delete */}
-      <TouchableOpacity onPress={() => onDelete(task.id)} style={styles.delete}>
+      <TouchableOpacity
+        onPress={() => onDelete(task?.id)}
+        style={styles.delete}
+      >
         <Typo style={styles.deleteText}>🗑️</Typo>
       </TouchableOpacity>
     </View>

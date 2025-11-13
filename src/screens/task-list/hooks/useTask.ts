@@ -11,6 +11,8 @@ import {
 import useInternet from '../../../hooks/useInternet';
 import { notEmpty } from '../../../utils/Validations';
 import { LABEL } from '../constant/constant';
+import { removeTaskById } from '../../../redux/slices/tasks/taskSlice';
+import { ToastAlert } from '../../../utils/helperFunctions/CustomToast';
 
 const PAGE_SIZE = 10;
 
@@ -118,6 +120,26 @@ export default function useTask() {
     ]);
   };
 
+  // Delete Task
+  const deleteTask = useCallback(
+    (id: string) => {
+      Alert.alert(LABEL.DELETE, LABEL.DELETE_CONFIRMATION, [
+        { text: 'Cancel' },
+        {
+          text: 'OK',
+          onPress: () => {
+            dispatch(removeTaskById(id));
+            ToastAlert({
+              message: LABEL.TASK_DELETED,
+              type: 'success',
+            });
+          },
+        },
+      ]);
+    },
+    [dispatch],
+  );
+
   return {
     tasks: paginated,
     fullCount: filtered?.length,
@@ -138,5 +160,6 @@ export default function useTask() {
     openEditModal,
     selectedTask,
     handleClearAll,
+    deleteTask,
   };
 }

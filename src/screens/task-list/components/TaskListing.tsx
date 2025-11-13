@@ -24,7 +24,7 @@ export default function TaskListing() {
     refreshing,
     onRefresh,
     // editTask,
-    // deleteTask,
+    deleteTask,
     syncNow,
     searchQuery,
     setSearchQuery,
@@ -50,8 +50,7 @@ export default function TaskListing() {
         task={data}
         // onToggle={t => editTask(t.id, { completed: !t.completed })}
         onEdit={openEditModal}
-        // onDelete={id => deleteTask(id)}
-        onDelete={() => {}}
+        onDelete={id => deleteTask(id)}
       />
     );
   };

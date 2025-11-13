@@ -57,7 +57,7 @@ const tasksSlice = createSlice({
 
     // remove fully (used after successful remote delete)
     removeTaskById: (state, action: PayloadAction<string>) => {
-      state.list = state.list?.filter(t => t?.id !== action.payload);
+      state.list = state.list?.filter(t => t?.id !== action?.payload);
     },
 
     // mark task as synced and set remoteId if provided
