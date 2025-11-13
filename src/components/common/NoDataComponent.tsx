@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     fontFamily: FONT_FAMILY.POPPINS_REGULAR,
     fontSize: isTablet ? 24 : 16,
     fontWeight: '700',
-    marginTop: 20,
+    marginBottom: 30,
     color: Color.white_2,
   },
   image: {
