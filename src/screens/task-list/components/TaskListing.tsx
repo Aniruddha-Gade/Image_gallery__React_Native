@@ -68,6 +68,7 @@ export default function TaskListing() {
           onPress={syncNow}
           buttonColor={Color.primary}
           style={styles.syncBtn}
+          disabled={syncing}
         />
       </View>
 
