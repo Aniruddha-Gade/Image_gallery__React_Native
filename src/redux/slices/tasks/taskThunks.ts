@@ -34,6 +34,7 @@ export const syncPendingTasks = createAsyncThunk<Task[], void, { state: any }>(
         local = stored;
       } else {
         // console.log('No tasks anywhere, skipping sync');
+        ToastAlert({ type: 'success', message: LABEL.NO_PENDING_TASKS_TO_SYNC });
         return [];
       }
     }
