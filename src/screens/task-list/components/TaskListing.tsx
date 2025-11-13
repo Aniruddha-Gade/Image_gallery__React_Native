@@ -58,7 +58,6 @@ export default function TaskListing() {
     );
   };
 
-  console.log('fullCount = ', fullCount);
   return (
     <View style={styles.container}>
       <ScreenLoader loader={loading} />
