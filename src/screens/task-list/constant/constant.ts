@@ -17,6 +17,12 @@ export const LABEL = {
   CLEAR_ALL: 'Clear All Tasks',
   CLEAT_ALL_CONFIRMATION: 'Are you sure you want to delete all tasks?',
   YES_CLEAR_ALL: 'Yes, clear all',
+  DELETE: 'Delete',
+  DELETE_CONFIRMATION: 'Are you sure you want to delete this task?',
+  TITLE: 'Title',
+  DESCRIPTION: 'Description',
+  STATUS: 'Status',
+  TASK_DELETED: 'Task deleted successfully',
 };
 
 export const ADD_TASK_INIT_VALUES: Task = {
