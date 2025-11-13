@@ -87,7 +87,7 @@ export default function OverlayModal(props: Props) {
 
 const styles = StyleSheet.create({
   overlay: {
-    backgroundColor: Color.light_grey_1,
+    backgroundColor: Color.light_grey_3,
     zIndex: 999,
     width: WIDTH,
     height: HEIGHT,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   wrapper: {
-    backgroundColor: Color.black_3,
+    backgroundColor: Color.black,
     borderRadius: 16,
     width: '90%',
     maxHeight: HEIGHT * 0.95, // keeps it inside visible area but not tiny

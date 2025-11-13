@@ -20,6 +20,7 @@ const Color = {
   light_grey: '#B3B3B3',
   light_grey_1: 'rgba(0, 0, 0, 0.35)',
   light_grey_2: 'rgba(98, 95, 95, 0.35)',
+  light_grey_3: 'rgba(173, 158, 158, 0.56)',
   // light_grey_2: '#E2E2E2',
   // light_grey_3: '#E9EAEA',
   // light_grey_4: '#EDEBFB',
