@@ -122,5 +122,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 16,
     marginTop: isTablet ? 25 : 10,
+    fontWeight: '800',
   },
 });
