@@ -1,8 +1,118 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 📱 Productivity Suite – Task Manager & My Gallery App  
+
+## 🧾 Project Description  
+
+Welcome to **Productivity Suite**, a dual React Native project that includes two powerful mobile applications:  
+
+1. ✅ **Task Management App** - A simple yet efficient offline-first task tracker with local storage and sync support.  
+2. 🖼️ **My Gallery App** – A lightweight, fast, and beautiful local photo gallery to store and manage your images.  
+
+Both apps are built using **React Native CLI**, following **modular architecture**, **Redux Toolkit** for state management, and **AsyncStorage** for local persistence.  
+
+These projects are designed with a focus on **clean code**, **performance**, and **real-world usability**, making them great examples of scalable mobile app development.
+
+App Link - [ https://drive.google.com/file/d/18bCxpgiBTA7SZCXRhrDPNUu-a1X1t0ee/view?usp=sharing ]
+---
+
+## 🗂️ Table of Contents  
+
+| Section | Description |
+| -------- | ------------ |
+| [Description](#description-) | 📚 Overview of both apps |
+| [Technologies](#tech-stack-) | 💻 Tech stack used |
+| [Features](#features-) | 🏰 App features |
+| [Problem Solving Origin](#problem-solving-origin-) | 💡 Real-world inspiration |
+| [Screenshots](#screen-preview-) | 🖼️ App preview |
+| [Demo Video](#demo-video-) | 🎬 App demonstration |
+
+---
+
+## 📚 Description  
+
+### 📝 Task Management App  
+
+The **Task Manager** helps users efficiently create, update, and organize daily tasks, even offline.  
+It was built to demonstrate **offline-first design**, **Redux-based state synchronization**, and **persistent local data** handling.
+
+**Key Highlights:**
+- Full CRUD operations (Create, Read, Update, Delete)
+- Offline support via AsyncStorage
+- Redux Toolkit with createAsyncThunk for background sync
+- Status-based task syncing (Pending / Synced)
+- Simple search and filter functionality
+- Clean, responsive UI
+
+---
+
+### 🖼️ My Gallery App  
+
+The **My Gallery** app is a modern local image management tool that allows users to import, view, and organize multiple images directly from their device, completely offline.
+
+**Key Highlights:**
+- Select and store multiple images from device gallery
+- Smooth swipe-down gesture to close full-screen view
+- Fast and memory-optimized image rendering
+- Local storage using AsyncStorage
+- Minimal and elegant UI  
+
+---
+
+## 💻 Tech Stack  
+
+| Logo | Technology |
+| ---- | ----------- |
+| <img height="40" src="https://reactnative.dev/img/header_logo.svg"> | React Native CLI |
+| <img height="40" src="https://redux-toolkit.js.org/img/redux.svg"> | Redux Toolkit |
+| <img height="40" src="https://react-hook-form.com/images/logo/react-hook-form-logo-only.png"> | React Hook Form |
+| <img height="40" src="https://cdn.hashnode.com/res/hashnode/image/upload/v1679386490806/a8f88586-10de-41cc-9f32-d4004a7719ec.png"> | Yup Validation |
+| <img height="40" src="https://miro.medium.com/1*c69dJw9ThZSwG_AgzLBTMQ.png"> | AsyncStorage |
+| <img height="40" src="https://www.vectorlogo.zone/logos/github/github-icon.svg"> | GitHub & Version Control |
+
+---
+
+## 🎨 Features  
+
+### ✅ **Task Management App**
+- 🗂️ Create, Edit, and Delete Tasks
+- 🔄 Background Task Sync (Pending → Synced)
+- 💾 Offline Storage with AsyncStorage
+- 🔍 Search Tasks
+- 🗑️ Clear All Tasks Feature
+- 🕓 Sync Status Indicator (Pending / Synced)
+- ⚙️ Redux Toolkit with Async Thunks for data operations
+- ꩜ Auto Sync once back to internet
+- 🗝 Manual sync button
+
+---
+
+### 🖼️ **My Gallery App**
+- 📸 Pick and Add Multiple Images from Gallery
+- 🧠 Efficient local caching (URIs stored in AsyncStorage)
+- 📱 Fullscreen Image Viewer with Zoom and Swipe-Down-to-Close
+- 🚀 Lightweight and performance-optimized image handling
+- 💾 Offline-first with complete local persistence
+- 🧹 Option to clear all stored images
+- ✨ Smooth and modern UI built with clean reusable components
+
+---
+
+## 💡 Problem Solving Origin  
+
+---
+
+## 🖼️ Screen Preview  
+
+
+| Task Manager | My Gallery |
+| ------------- | ----------- |
+| 📝 Task List UI | 🖼️ Gallery Grid View |
+| 🔄 Sync Flow | 📷 Image Picker |
+| 🔍 Search Bar | 🔍 Zoom Viewer |
+
+---
+
 
 # Getting Started
-
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
 
 ## Step 1: Start Metro
 
@@ -12,15 +122,13 @@ To start the Metro dev server, run the following command from the root of your R
 
 ```sh
 # Using npm
-npm start
+npm start --reset-cache
 
-# OR using Yarn
-yarn start
 ```
 
 ## Step 2: Build and run your app
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+With Metro running, open a new terminal window/pane from the root of your React Native project, and use following commands to build and run your Android or iOS app:
 
 ### Android
 
@@ -28,70 +136,4 @@ With Metro running, open a new terminal window/pane from the root of your React 
 # Using npm
 npm run android
 
-# OR using Yarn
-yarn android
 ```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
