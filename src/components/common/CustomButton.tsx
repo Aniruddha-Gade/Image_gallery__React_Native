@@ -38,7 +38,7 @@ function CustomButton(props: Props) {
       onPress={onPress}
       style={[
         styles.mainView,
-        { backgroundColor: buttonColor, borderRadius },
+        { backgroundColor: buttonColor, borderRadius , opacity:disabled ? 0.5 : 1 },
         style,
       ]}
       disabled={disabled}
