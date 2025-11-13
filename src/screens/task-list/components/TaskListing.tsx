@@ -14,6 +14,7 @@ import CustomButton from '../../../components/common/CustomButton';
 import Searchbar from '../../../components/common/Searchbar';
 import { Task } from '../types/type';
 import { isArrayLength } from '../../../utils/Validations';
+import useKeyboard from '../../../hooks/useKeyboard';
 
 export default function TaskListing() {
   const {
@@ -36,6 +37,8 @@ export default function TaskListing() {
     selectedTask,
     handleClearAll,
   } = useTask();
+
+  const isKeyboard = useKeyboard();
 
   const renderItem = ({ item }: any) => {
     const data = {
@@ -104,7 +107,7 @@ export default function TaskListing() {
           onPress={handleClearAll}
           name="clear"
           icon="MaterialIcons"
-          customStyles={styles.clearBtn}
+          customStyles={[styles.clearBtn, isKeyboard && styles.hide]}
         />
       )}
 
@@ -113,7 +116,7 @@ export default function TaskListing() {
         onPress={openAddModal}
         name="plus"
         icon="AntDesign"
-        customStyles={styles.addBtn}
+        customStyles={[styles.addBtn, isKeyboard && styles.hide]}
       />
 
       <OverlayModal
@@ -179,4 +182,7 @@ const styles = StyleSheet.create({
     bottom: '10%',
     backgroundColor: Color.red,
   },
+  hide: {
+    display: 'none',
+  }
 });
