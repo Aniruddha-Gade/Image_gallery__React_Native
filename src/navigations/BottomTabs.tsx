@@ -1,35 +1,26 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { View } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Home from '../screens/home/Home';
 import { isTablet } from '../utils/Platform';
 import { BTM_TAB_NAMES } from '../constant/constant';
 import FONT_FAMILY from '../assets/FontFamily';
 import Color from '../assets/Color';
-import Typo from '../components/common/Typo';
+import GalleryScreen from '../screens/gallery/GalleryScreen';
+import TaskStack from './stacks/TaskStack';
 
 const Tab = createBottomTabNavigator();
-
-function TempScreens() {
-  // eslint-disable-next-line react-native/no-raw-text
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Typo
-        text="Coming Soon....."
-        fontSize={isTablet ? 22 : 18}
-        fontFamily={FONT_FAMILY.POPPINS_SEMIBOLD}
-      />
-      {/* <StyledTextBold>Coming Soon.....</StyledTextBold> */}
-    </View>
-  );
-}
 
 const Size = isTablet ? 30 : 25;
 
 const createTabIcon = (iconName: string) => {
   const TabIcon = function TabIconComponent({ color }: { color: string }) {
-    return <MaterialIcons name={iconName} size={Size} color={color} />;
+    if (iconName === 'tasks') {
+      return <FontAwesome5 name={iconName} size={Size} color={color} />;
+    }
+
+    return <Entypo name={iconName} size={Size} color={color} />;
   };
   return TabIcon;
 };
@@ -44,15 +35,19 @@ function BottomTabs() {
           fontFamily: FONT_FAMILY.POPPINS_SEMIBOLD,
         },
         tabBarActiveTintColor: Color.primary,
-        tabBarInactiveTintColor: Color.grey,
+        tabBarInactiveTintColor: Color.white,
         tabBarStyle: {
-          minHeight: isTablet ? 55 : 55,
+          minHeight: 55,
           alignItems: 'center',
-          paddingHorizontal: isTablet ? 8 : 0,
+          backgroundColor: Color.black_2,
+          borderTopWidth: 0,
+          elevation: 0,
+          shadowOpacity: 0,
         },
         tabBarHideOnKeyboard: true,
         tabBarLabelPosition: isTablet ? 'beside-icon' : 'below-icon',
         tabBarShowLabel: true,
+        tabBarActiveBackgroundColor: Color.black_1,
       }}
     >
       <Tab.Screen
@@ -60,24 +55,24 @@ function BottomTabs() {
         component={Home}
         options={{
           tabBarLabel: BTM_TAB_NAMES.HOME,
-          tabBarIcon: createTabIcon('dashboard'),
+          tabBarIcon: createTabIcon('home'),
         }}
       />
 
       <Tab.Screen
         name={BTM_TAB_NAMES.GALLERY}
-        component={TempScreens}
+        component={GalleryScreen}
         options={{
           tabBarLabel: BTM_TAB_NAMES.GALLERY,
-          tabBarIcon: createTabIcon('gallery'),
+          tabBarIcon: createTabIcon('images'),
         }}
       />
       <Tab.Screen
-        name={BTM_TAB_NAMES.SETTINGS}
-        component={TempScreens}
+        name={BTM_TAB_NAMES.TODO}
+        component={TaskStack}
         options={{
-          tabBarLabel: BTM_TAB_NAMES.SETTINGS,
-          tabBarIcon: createTabIcon('settings'),
+          tabBarLabel: BTM_TAB_NAMES.TODO,
+          tabBarIcon: createTabIcon('tasks'),
         }}
       />
     </Tab.Navigator>
