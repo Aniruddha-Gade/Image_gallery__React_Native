@@ -59,13 +59,13 @@ export const syncPendingTasks = createAsyncThunk<Task[], void, { state: any }>(
           working[i] = {
             ...t,
             syncStatus: SYNC_STATUS.SYNCED,
-            remoteId: remoteId ?? t.remoteId ?? null,
+            remoteId: remoteId ?? t?.remoteId ?? null,
             updatedAt: new Date().toISOString(),
           };
           updated = true;
         } catch (e) {
           // push failed, keep pending
-          console.warn('push failed for', t.id);
+          console.warn('push failed for', t?.id);
         }
       }
     }
@@ -73,11 +73,14 @@ export const syncPendingTasks = createAsyncThunk<Task[], void, { state: any }>(
     // Handle deleted items
     // We will attempt to delete remote (if remoteId) then remove from working list.
 
+
+    // No need of below check, Todo: remove below check
     // Persist final list
     // Save only if something changed
     if (updated) {
       await saveTasksToStorage(working);
       // console.log('Pending tasks synced & saved.');
+      ToastAlert({ type: 'success', message: LABEL.PENDING_TASKS_SYNCED });
       return working;
     }
 
