@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Alert } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import NetInfo from '@react-native-community/netinfo';
-import { AppDispatch, RootState } from '../../../app/store';
+import { AppDispatch, RootState } from '../../../redux/store';
 import {
   clearAllTasksThunk,
   loadTasks,

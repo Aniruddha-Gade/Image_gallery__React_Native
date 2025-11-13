@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import tasksReducer from '../redux/slices/tasks/taskSlice';
+import tasksReducer from './slices/tasks/taskSlice';
 import { saveTasksToStorage } from '../screens/task-list/utils/storage';
 
 export const store = configureStore({

@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useCallback, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../../app/store';
+import { AppDispatch } from '../../../redux/store';
 import { v4 as uuidv4 } from 'uuid';
 import { SYNC_STATUS, Task } from '../types/type';
 import {

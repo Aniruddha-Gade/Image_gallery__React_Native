@@ -10,7 +10,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import RootNavigation from './src/navigations/RootNavigation';
 import { PaperProvider } from 'react-native-paper';
 import { Provider } from 'react-redux';
-import { store } from './src/app/store';
+import { store } from './src/redux/store';
 import Toast from 'react-native-toast-message';
 import { toastConfig } from './src/utils/toastConfig';
 
