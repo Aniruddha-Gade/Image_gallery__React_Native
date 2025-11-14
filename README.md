@@ -167,3 +167,225 @@ With Metro running, open a new terminal window/pane from the root of your React 
 npm run android
 
 ```
+
+
+
+
+---
+
+# 🛠️ Task Management App – Architecture, Flow & Sync Approach
+
+This section explains **how tasks are created, updated, deleted, stored locally, and synced with a remote API** using an offline-first architecture with Redux Toolkit + AsyncStorage.
+
+---
+
+## 🔄 Overview of the Approach
+
+The Task Management App follows a **Local-First Architecture**, meaning:
+
+> **All task operations happen locally first and sync to the remote API whenever possible.**
+
+This ensures:
+
+* App works offline
+* No data loss
+* Smooth performance
+* Predictable state management
+
+---
+
+# 🔰 1. **Creating a Task (Add Flow)**
+
+### **Flow**
+
+```
+UI Form → Redux Slice → Add Task → Save to AsyncStorage → Mark as PENDING → Auto Sync (Remote API)
+```
+
+### **Detailed Steps**
+
+1. User enters **title**, **description**, etc.
+2. On submit:
+
+   * A **new task object** is created with:
+
+     * `id` (UUID)
+     * `syncStatus = 'pending'`
+     * `createdAt`, `updatedAt`
+3. The task is **added to Redux state**.
+4. Updated task list is **saved to AsyncStorage**.
+5. Sync worker (or manual Sync button) tries to push it to the server.
+6. On successful remote API response:
+
+   * The task is updated with:
+
+     * `remoteId`
+     * `syncStatus = 'synced'`
+
+---
+
+# ✏️ 2. **Editing a Task (Edit Flow)**
+
+### **Flow**
+
+```
+UI Form (Edit Mode) → Update Task in Redux → Save to AsyncStorage → syncStatus = PENDING → Auto Sync (Remote PUT API)
+```
+
+### **Detailed Steps**
+
+1. User opens form with prefilled values.
+2. On submitting update:
+
+   * Task is updated **locally** with:
+
+     * new values
+     * `syncStatus = 'pending'`
+     * updated timestamp
+3. Updated Redux state is stored in **AsyncStorage**.
+4. Sync worker attempts to:
+
+   * **UPDATE existing task remotely** (currently missing in your case)
+5. On successful update:
+
+   * `syncStatus = 'synced'`
+
+⚠️ **Known Improvement Needed**
+Currently the remote API creates a *new* task instead of updating, you need a proper PUT/UPDATE endpoint.
+
+---
+
+# 🗑️ 3. **Deleting a Task (Delete Flow)**
+
+### **Flow**
+
+```
+Delete in Redux → Remove from AsyncStorage → (intended) Remove from Remote API → Sync
+```
+
+### **Detailed Steps**
+
+1. User clicks delete.
+2. Task is **removed from Redux state** immediately.
+3. Updated list is saved to AsyncStorage.
+4. During sync:
+
+   * Expected behavior → call DELETE API for remote task
+   * Current issue → DELETE not implemented yet
+   * So remote tasks remain
+
+---
+
+# 💾 4. **Local Storage Persistence (AsyncStorage)**
+
+Every major change triggers:
+
+```
+Redux update → saveTasksToStorage(updatedList)
+```
+
+This ensures:
+
+* App remembers tasks after restart
+* Offline use is possible
+* Sync happens based on local state, not UI
+
+---
+
+# 🔄 5. **Auto Sync Mechanism (Background Sync)**
+
+### **How Sync Works**
+
+The app runs `syncPendingTasks` using Redux Thunk:
+
+```
+Pending Tasks → Loop through each → Try pushing to API → Update syncStatus → Save back to storage
+```
+
+### **Sync Logic**
+
+* Loop over all tasks
+* If `syncStatus === 'pending'`
+
+  * Try to push to server
+  * If success → update task (remoteId + syncStatus)
+  * If failure → keep pending, retry later
+* Save updated list to AsyncStorage
+* Return synced list to Redux
+
+### **Why This Works**
+
+* Fully offline-first
+* No user waits for network
+* Sync can run anytime:
+
+  * App start
+  * Pull-to-refresh
+  * Manual sync button
+
+---
+
+# 🔁 6. **Manual Sync Button (User Triggered Sync)**
+
+You provide a **Manual Sync Button** that calls:
+
+```ts
+dispatch(syncPendingTasks());
+```
+
+The button allows:
+
+* Re-sync after offline period
+* Try again after network failures
+* Force sync even if auto sync didn’t run
+
+### **Manual Sync Flow**
+
+```
+User presses SYNC → Run syncPendingTasks → Push PENDING tasks → Update Redux → Save AsyncStorage
+```
+
+---
+
+# 📊 Summary Flow Diagram
+
+```
+                ┌──────────────────────┐
+                │       User UI        │
+                └──────────┬───────────┘
+                           │
+                Add / Edit / Delete
+                           │
+            ┌──────────────▼──────────────┐
+            │        Redux Toolkit         │
+            └──────────────┬──────────────┘
+                           │
+                 Local-First Update
+                           │
+            ┌──────────────▼──────────────┐
+            │       AsyncStorage           │
+            └──────────────┬──────────────┘
+                           │
+                Mark Item syncStatus=PENDING
+                           │
+            ┌──────────────▼──────────────┐
+            │    Auto/Manual Sync Task    │
+            └──────────────┬──────────────┘
+                           │
+                   Remote API Sync
+```
+
+---
+
+# 🚀 Final Notes
+
+This architecture ensures:
+
+✔ 100% offline usability
+✔ No blocking UI during network calls
+✔ Stable and predictable state management
+✔ Easy syncing with backend when online
+✔ Perfect approach for mobile apps with flaky network environments
+
+---
+
